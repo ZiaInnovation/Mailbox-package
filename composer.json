@@ -1,0 +1,19 @@
+{
+    "name": "ziainnovation/mailbox",
+    "description": "This is Mailbox in house  service. This package will create your domain email or all register users.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "imyaSayad",
+            "email": "imtyas.sayad@ziainnovation.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Ziainnovation\\Mailbox\\": "src/"
+        }
+    }
+}
