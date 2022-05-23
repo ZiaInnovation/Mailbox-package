@@ -37,7 +37,7 @@ trait userEmailTrait{
     {
         $e = useremail::where('user_id',Auth::user()->id)->first();
         $email = $e->email;
-        dd($email);
+
         return $email;
     }
 }
