@@ -74,7 +74,7 @@
 
                                         @forelse ( $mails as $mail )
                                         <a href="{{route('mails.show',$mail->id)}}">
-                                            <div class="main-mail-item {{$mail->is_seen == 0 ? 'unread':''}}">
+                                            <div class="main-mail-item {{$mail->read == 0 ? 'unread':''}}">
                                                 <div class="main-mail-checkbox">
                                                     <label class="ckbox"><input type="checkbox"> <span></span></label>
                                                 </div>

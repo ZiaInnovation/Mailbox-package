@@ -12,14 +12,15 @@ class MailController extends Controller
 {
     use userEmailTrait;
 
-    public $email ='admin@yourdomin.com';
+
     public function index()
     {
-         $this::check();
-        //  $email = Auth::user()->email->email;
-        // $email ='admin@yourdomin.com';
 
-        $arr['mails'] = Mailbox::where('sender','<>',$this->email)->get();
+
+         $this::check();
+
+
+        $arr['mails'] = Mailbox::where('receiver',$this::getEmail())->get();
         return view('mailbox::mail')->with($arr);
     }
     public function sent()
@@ -28,7 +29,7 @@ class MailController extends Controller
         //  $email = Auth::user()->email->email;
 
 
-        $arr['mails'] = Mailbox::where('sender',$this->email)->get();
+        $arr['mails'] = Mailbox::where('sender',$this::getEmail())->get();
         return view('mailbox::sent')->with($arr);
     }
     public function stared()
@@ -57,12 +58,11 @@ class MailController extends Controller
         $arr['mail'] = Mailbox::find($id);
 
 
-        if($arr['mail']->sender != $this->email)
-        {
-            Mailbox::where('id',$id)->update([
-                'is_seen'=> 1,
+
+            Mailbox::where('id',$id)->where('receiver' , $this::getEmail())->update([
+                'read'=> 1,
             ]);
-        }
+
 
         return view('mailbox::mail-read')->with($arr);
     }
@@ -73,7 +73,7 @@ class MailController extends Controller
 
         Mailbox::create([
             'receiver' => $request->receiver,
-            'sender'    => 'admin@yourdomin.com',
+            'sender'    => $this::getEmail(),
             'subject'   => $request->subject,
             'body'      => $request->message,
 

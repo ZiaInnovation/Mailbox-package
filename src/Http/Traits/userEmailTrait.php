@@ -3,6 +3,7 @@
 namespace Ziainnovation\Mailbox\Http\Traits;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Ziainnovation\Mailbox\Http\Models\useremail;
 
@@ -30,5 +31,13 @@ trait userEmailTrait{
 
         }
 
+    }
+
+    public static function getEmail()
+    {
+        $e = useremail::where('user_id',Auth::user()->id)->first();
+        $email = $e->email;
+        dd($email);
+        return $email;
     }
 }
