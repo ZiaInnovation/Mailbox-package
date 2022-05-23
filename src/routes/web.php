@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 use Ziainnovation\Mailbox\Http\Controllers\MailController;
 
-Route::middleware('auth')->group(function(){
+Route::middleware('web')->group(function(){
 
     Route::get('/mails',[MailController::class,'index'])->name('mails.index');
     Route::get('inbox',[MailController::class,'index'])->name('mails.index');
