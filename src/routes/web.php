@@ -4,7 +4,7 @@ use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 
 use Ziainnovation\Mailbox\Http\Controllers\MailController;
-Route::get('/',[MailController::class,'index'])->name('mails.index');
+Route::get('/mails',[MailController::class,'index'])->name('mails.index');
 Route::get('inbox',[MailController::class,'index'])->name('mails.index');
 Route::get('sent',[MailController::class,'sent'])->name('mails.sent');
 Route::get('stared',[MailController::class,'stared'])->name('mails.stared');
