@@ -11,6 +11,15 @@ class mailServiceProvider extends ServiceProvider{
         $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
 
         $this->loadViewsFrom(__DIR__ . '/views','mailbox');
+
+        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+
+
+        $this->publishes([
+            __DIR__.'/../resources/views' => resource_path('views/Mailbox'),
+            __DIR__.'/../public' => public_path('Mailbox'),
+        ]);
+
     }
 
     public function register()

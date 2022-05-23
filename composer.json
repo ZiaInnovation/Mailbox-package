@@ -15,5 +15,12 @@
         "psr-4": {
             "Ziainnovation\\Mailbox\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ziainnovation\\Mailbox\\mailServiceProvider"
+            ]
+        }
     }
 }
